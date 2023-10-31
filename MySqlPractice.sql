@@ -1,0 +1,199 @@
+CREATE DATABASE familyDetails;
+
+USE familyDetails;
+
+SHOW TABLES;
+
+CREATE TABLE familyMembers ( id INT PRIMARY KEY ,
+NAME VARCHAR(30) ,
+AGE INT , 
+RELATION VARCHAR(20),
+OCCUPATION VARCHAR(20),
+SALARY INT);
+
+SELECT * FROM familyMembers;
+
+INSERT INTO familyMembers Values(1,"SELVAMOORTHY",55,"FATHER","CARPENTER",30000,"ACTIVA DLX") , (2,"VIJAYALAKSHMI",45,"MOTHER","HOUSEWIFE",0,"N/A");
+
+SELECT * FROM familyMembers;
+
+INSERT INTO familyMembers VALUES (3,"LAVANYA",25,"SISTER","TAX ANALYST" , 44000,"N/A") , (4 , "VISHWA" , 21 , "SON" , "DEVELOPER" , 100000,"R15 V3");
+
+SELECT * FROM familyMembers;
+
+ALTER TABLE familyMembers ADD VEHICLE VARCHAR(20);
+
+SELECT * FROM familyMembers;
+
+ALTER TABLE familyMembers DROP VEHICLE;
+
+SELECT* FROM familyMembers;
+
+INSERT INTO familyMembers(id,NAME) VALUES (5,"AAA");
+
+SELECT * FROM familyMembers;
+
+SELECT * FROM familyMembers ;
+
+SELECT RELATION 
+FROM familyMembers
+WHERE id=1;
+
+SELECT * FROM familyMembers
+WHERE SALARY=0 AND RELATION IN ("FATHER" , "SISTER" , "SON" , "MOTHER");
+
+SELECT * FROM familyMembers
+WHERE SALARY BETWEEN 40000 AND 200000;
+
+SELECT * FROM familyMembers
+LIMIT 4;
+
+ALTER TABLE familyMembers ADD VEHICLE VARCHAR(20);
+
+SELECT * FROM familyMembers;
+
+UPDATE familyMembers
+SET VEHICLE="ACTIVA DLX"
+WHERE id=1;
+
+UPDATE familyMembers
+SET VEHICLE="N/A"
+WHERE id=2;
+
+UPDATE familyMembers
+SET VEHICLE="N/A"
+WHERE id=3;
+
+UPDATE familyMembers
+SET VEHICLE="R15 V3"
+WHERE id=4;
+
+SELECT * FROM familyMembers;
+
+DELETE FROM familyMembers
+WHERE id=5;
+
+SELECT * FROM familyMembers;
+
+SELECT * FROM familyMembers
+WHERE id BETWEEN 1 AND 2;
+
+SELECT * FROM familyMembers
+WHERE NAME LIKE "V%";
+
+SELECT * FROM familyMembers
+WHERE NAME LIKE "%A";
+
+SELECT * FROM familyMembers
+WHERE NAME LIKE "%M%";
+
+SELECT * FROM familyMembers
+WHERE NAME LIKE "__J%";
+
+SELECT * FROM familyMembers;
+
+UPDATE familyMembers
+SET OCCUPATION="CARPENTER"
+WHERE id=2;
+
+SELECT * FROM familyMembers;
+
+SELECT * FROM familyMembers
+ORDER BY OCCUPATION ;
+
+SELECT * FROM familyMembers
+ORDER BY AGE DESC;
+
+SELECT * FROM familyMembers
+ORDER BY NAME ,AGE , OCCUPATION;
+
+SELECT * FROM familyMembers;
+
+
+
+SELECT DISTINCT OCCUPATION FROM familyMembers;
+
+UPDATE familyMembers
+SET OCCUPATION="HOUSEWIFE"
+WHERE id=2;
+
+INSERT INTO familyMembers VALUES (5,"MAX",22,"SOMEONE","VIP",22222,"N/A");
+
+SELECT * FROM familyMembers;
+
+UPDATE familyMembers
+SET OCCUPATION="CARPENTER"
+WHERE id=5;
+
+SELECT * FROM familyMembers;
+
+SELECT * FROM familyMembers
+WHERE OCCUPATION="CARPENTER"
+ORDER BY SALARY DESC;
+
+SELECT * FROM familyMembers
+ORDER BY ( CASE OCCUPATION
+WHEN "DEVELOPER" THEN 1
+ELSE 100 END);
+
+SELECT * FROM familyMembers
+ORDER BY ( CASE NAME
+WHEN "SELVAMOORTHY" THEN 1
+WHEN "VISHWA" THEN 2
+WHEN "VIJAYALAKSHMI" THEN 3
+WHEN "LAVANYA" THEN 4
+ELSE 10 END);
+
+SELECT COUNT(*) TOTAL
+FROM familyMembers;
+
+SELECT * FROM familyMembers;
+
+SELECT COUNT(*) TOTALCARPENTERS FROM familyMembers
+WHERE OCCUPATION="CARPENTER";
+
+SELECT COUNT(*) SALARY FROM familyMembers
+WHERE SALARY>=30000;
+
+SELECT AVG(SALARY)
+FROM familyMembers
+WHERE OCCUPATION="CARPENTER";
+
+SELECT AVG(SALARY) FROM familyMembers;
+
+SELECT AVG(SALARY)  FROM familyMembers
+WHERE id=3;
+
+SELECT AVG(AGE) FROM familyMembers;
+
+SELECT SUM(AGE) FROM familyMembers;
+
+SELECT SUM(SALARY) FROM familyMembers
+WHERE OCCUPATION="CARPENTER";
+
+SELECT MIN(SALARY) FROM familyMembers;
+
+SELECT MAX(SALARY) FROM familyMembers;
+
+SELECT MIN(AGE) FROM familyMembers;
+
+SELECT MAX(AGE) FROM familyMembers;
+
+SELECT  ucase(NAME)NAME FROM familyMembers;
+
+SELECT OCCUPATION , char_length(OCCUPATION) CHARCOUNT
+FROM familyMembers;
+
+SELECT NAME , concat("RS." , SALARY) SALARY
+FROM familyMembers;
+
+SELECT NAME , concat("RS." , FORMAT(SALARY,0))SALARY
+FROM familyMembers;
+
+SELECT NAME , LEFT(OCCUPATION,4) SALARY
+
+FROM familyMembers;
+
+
+
+
